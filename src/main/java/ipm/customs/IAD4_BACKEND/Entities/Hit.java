@@ -5,27 +5,26 @@ import javax.persistence.*;
 @Entity
 @Table(name = "hit_to_graph")
 public class Hit {
-    @Column(name = "ID" )
+    @Column(name = "id")
     @Id
-    @GeneratedValue
-    private int id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    public Integer id;
 
     @Column(name = "x")
-    private double x;
+    public double x;
 
     @Column(name = "y")
-    private double y;
+    public double y;
 
     @Column(name = "r")
-    private double r;
+    public double r;
 
     @Column(name = "answer")
-    private boolean answer;
+    public boolean answer;
 
     @Column(name = "hit_time")
-    private String text;
+    public String hit_time;
 
-    protected Hit(){
-
+    protected Hit() {
     }
 }
