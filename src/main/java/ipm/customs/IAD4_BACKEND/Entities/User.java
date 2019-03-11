@@ -3,18 +3,19 @@ package ipm.customs.IAD4_BACKEND.Entities;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "user")
+@Table(name = "usr")
 public class User {
     @Column(name = "id")
     @Id
     @GeneratedValue
-    private int id;
+    public int id;
 
     @Column(name = "username")
-    private String username;
+    public String username;
 
     @Column(name = "password")
-    private  String password;
+    public String password;
 
-    protected User(){}
+    protected User() {
+    }
 }

@@ -17,7 +17,7 @@ public class Hit {
     public double y;
 
     @Column(name = "r")
-    public double r;
+    public Integer r;
 
     @Column(name = "answer")
     public boolean answer;
