@@ -14,6 +14,7 @@ public class Encryptor {
         BASE64Encoder encoder = new BASE64Encoder();
         byte[] salt = new byte[8];
         rand.nextBytes(salt);
+
         return encoder.encode(salt) + encoder.encode(str.getBytes());
     }
     public static String decrypt(String encstr) {
