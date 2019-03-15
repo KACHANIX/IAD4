@@ -10,10 +10,10 @@ public class User {
     @GeneratedValue
     public int id;
 
-    @Column(name = "username")
+    @Column(name = "username", length = 20)
     public String username;
 
-    @Column(name = "password")
+    @Column(name = "password", length = 50)
     public String password;
 
     protected User() {
