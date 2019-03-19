@@ -63,14 +63,20 @@ public class MainController {
     }
 
     @CrossOrigin
-    @RequestMapping(value = "/add_hit", method = RequestMethod.POST,
+    @RequestMapping(value = "/add_hit/{username}", method = RequestMethod.POST,
             consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody()
-    public Hit newHit(@RequestBody Hit hit) {
+    public Hit newHit(@RequestBody Hit hit, @PathVariable String username) {
         hit.hit_time = new Timestamp(System.currentTimeMillis()).toString();
         hit.answer = areaChecker.Check(hit.x, hit.y, hit.r);
-
+        hit.uUsr = userService.findUser(username);
         return hitService.addHit(hit);
+    }
+
+    @CrossOrigin
+    @RequestMapping(value = "/user_hits/{username}",method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<Hit> userHits(@PathVariable String username){
+        return hitService.getHitsByUser(userService.findUser(username));
     }
 
     @CrossOrigin

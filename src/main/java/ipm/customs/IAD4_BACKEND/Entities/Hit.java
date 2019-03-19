@@ -17,13 +17,17 @@ public class Hit {
     public double y;
 
     @Column(name = "r")
-    public Integer r;
+    public double r;
 
     @Column(name = "answer")
     public boolean answer;
 
     @Column(name = "hit_time")
     public String hit_time;
+
+    @ManyToOne
+    @JoinColumn(name = "usr_username")
+    public User uUsr;
 
     protected Hit() {
     }

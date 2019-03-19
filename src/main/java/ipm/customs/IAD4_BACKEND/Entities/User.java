@@ -1,6 +1,9 @@
 package ipm.customs.IAD4_BACKEND.Entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "usr")
@@ -15,6 +18,10 @@ public class User {
 
     @Column(name = "password", length = 50)
     public String password;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "uUsr")
+    public Set<Hit> hits;
 
     protected User() {
     }
