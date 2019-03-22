@@ -26,7 +26,6 @@ public class MainController {
     AreaChecker areaChecker;
 
     @CrossOrigin
-
     @RequestMapping(value = "/all_users", method = RequestMethod.GET)
     public List<User> getUsers() {
         for (User usr : userService.getUsers()) {
@@ -38,7 +37,6 @@ public class MainController {
     @CrossOrigin
     @RequestMapping(value = "/add_user", method = RequestMethod.POST,
             consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseBody()
     public boolean newUser(@RequestBody User user) {
         boolean answer = true;
         user.password = Encryptor.encrypt(user.password);
@@ -65,7 +63,6 @@ public class MainController {
     @CrossOrigin
     @RequestMapping(value = "/add_hit/{username}", method = RequestMethod.POST,
             consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseBody()
     public Hit newHit(@RequestBody Hit hit, @PathVariable String username) {
         hit.hit_time = new Timestamp(System.currentTimeMillis()).toString();
         hit.answer = areaChecker.Check(hit.x, hit.y, hit.r);
@@ -82,7 +79,6 @@ public class MainController {
     @CrossOrigin
     @RequestMapping(value = "/check_user", method = RequestMethod.POST,
             consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseBody()
     public boolean checkUser(@RequestBody User user) {
         boolean answer = false;
         for (User usr : userService.getUsers()) {
